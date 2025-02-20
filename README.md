@@ -144,7 +144,7 @@ Dieses MVC-System stellt eine grundlegende Implementierung dar. Es kann durch Ro
 
 ### Tag 2 ( Virtual-Host )
 
-- Ein Virtual Host (Virtueller Host) in Apache erlaubt es, mehrere Websites oder Projekte auf einem einzigen Server zu hosten und ihnen individuelle Domains oder Subdomains zuzuweisen. Statt localhost/projektname/public zu verwenden, kannst du mit einem Virtual Host beispielsweise projekt.local oder mvc.local aufrufen.
+- Ein Virtual Host (Virtueller Host) in Apache erlaubt es, mehrere Websites oder Projekte auf einem einzigen Server zu hosten und ihnen individuelle Domains oder Subdomains zuzuweisen. Statt localhost/projektname/public zu verwenden, kann man mit einem Virtual Host beispielsweise projekt.local oder mvc.local aufrufen.
 
 ---
 ### Konzept hinter Virtual Hosts:
@@ -153,7 +153,7 @@ Dieses MVC-System stellt eine grundlegende Implementierung dar. Es kann durch Ro
 - Mit Virtual Hosts: mvc.local
 
 #### 2. Erleichterung der Entwicklung
-- Statt umständliche Pfade mit /public zu verwenden, kannst du die URL direkt nutzen. Und es Erlaubt eine realistischere Umgebung, ähnlich einer echten Domain.
+- Statt umständliche Pfade mit /public zu verwenden, kann man die URL direkt nutzen. Und es Erlaubt eine realistischere Umgebung, ähnlich einer echten Domain.
 
 #### 3.Unabhängige Konfiguration für Projekte
 - Jedes Projekt kann eigene Apache- und PHP-Einstellungen haben. Und somit jedes Projekt eigene Error Logs, eigene SSL-Zertifikate für HTTPS-Testing.
@@ -253,6 +253,74 @@ Damit die Änderungen greifen, muss der Apache-Server neugestartet werden:
 </VirtualHost>
 
 ```
+---
+### Tag 3  Composer in PHP: Einführung und Installation
+### Was ist Composer?
+Composer ist ein **Paketmanager für PHP**, der die Verwaltung von Abhängigkeiten und Bibliotheken erleichtert. Er ermöglicht Entwicklern, externe PHP-Bibliotheken einfach in ein Projekt einzubinden und aktuell zu halten.
+
+## Konzept von Composer
+Das Hauptkonzept von Composer ist die **abhängigkeitsbasierte Paketverwaltung**:
+- **Zentrale Paketverwaltung** – Pakete werden aus dem [Packagist-Repository](https://packagist.org/) bezogen.
+- **Automatische Abhängigkeitsauflösung** – Falls ein Paket weitere Pakete benötigt, kümmert sich Composer um die Installation der richtigen Versionen.
+- **Autoloading** – Composer generiert automatisch eine `autoload.php`, um Klassen einfach in PHP zu laden.
+- **Versionsmanagement** – Composer nutzt Semantische Versionierung (SemVer), um kompatible Paketversionen zu verwenden.
+
+## Installation von Composer
+
+### 1. Global Installation (empfohlen)
+#### **Linux/MacOS**
+```sh
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php composer-setup.php
+sudo mv composer.phar /usr/local/bin/composer
+```
+
+#### **Windows**
+1. [Offizielle Composer-Setup-Datei](https://getcomposer.org/download/) herunterladen.
+2. Installation ausführen und `composer` in der PATH-Variable hinzufügen.
+
+Nach der Installation kann mit `composer -V` geprüft werden, ob Composer korrekt installiert wurde.
+
+### 2. Lokale Installation (im Projektverzeichnis)
+```sh
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php composer-setup.php
+```
+Dies lädt `composer.phar` ins Projektverzeichnis.
+
+## Initialisierung eines Composer-Projekts (`init` Methoden)
+Es gibt zwei Hauptwege, um Composer in einem Projekt zu initialisieren:
+
+### 1. Manuelle Initialisierung (`composer init`)
+```sh
+composer init
+```
+Dieser Befehl startet einen interaktiven Prozess zur Erstellung der `composer.json`-Datei.
+
+### 2. Automatische Initialisierung (`composer require`)
+Falls man direkt ein Paket installieren möchte, kann man `composer require` nutzen:
+```sh
+composer require monolog/monolog
+```
+Dadurch wird `composer.json` automatisch erstellt und das Paket **Monolog** installiert.
+
+#### Oder alternative Methode
+Erst eine composer.json erstellen mit leere object drin {} dann führe folgende Befehl aus in Terminal.
+```sh
+composer dump-autoload -o
+```
+
+- Was macht composer dump-autoload?
+
+Der Befehl composer dump-autoload generiert die Autoload-Dateien neu. Diese Dateien enthalten eine Zuordnung von Klassen zu ihren jeweiligen Dateipfaden. Dadurch wird es PHP ermöglicht, Klassen automatisch zu laden, sobald sie im Code verwendet werden. Dies ist besonders wichtig, da PHP standardmäßig nicht weiß, wo sich die Dateien der verschiedenen Klassen befinden.
+
+- Was bewirkt der Parameter -o?
+
+Der Parameter -o steht für "optimize" (optimieren). Er bewirkt, dass Composer die Autoload-Dateien so generiert, dass sie für den Produktionseinsatz optimiert sind. Dies führt zu einer schnelleren Ladezeit der Klassen, da die Zuordnungen effizienter gespeichert werden.
+
+
+## Fazit
+Composer ist ein **unverzichtbares Tool für PHP-Entwicklung**, das eine saubere Verwaltung von Bibliotheken und Abhängigkeiten ermöglicht. Es kann entweder **global** oder **lokal** installiert werden und bietet verschiedene Möglichkeiten zur Initialisierung eines Projekts.
 
 
 
