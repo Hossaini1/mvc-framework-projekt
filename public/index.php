@@ -3,6 +3,8 @@
 // requure dirname(__DIR__) holt unsere pfad bis unsere ordner projekt zb. bis public danach wir geben rest pfad bis ziel ordner.
 require dirname(__DIR__). "/vendor/autoload.php";
 
-echo 'test hallo';
+use Core\{Request, Router};
+
+Router::load('../routes/routes.php')->direct(Request::url(), Request::method());
 
 ?>
