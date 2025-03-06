@@ -1,7 +1,11 @@
 <?php 
+namespace App\Controllers;
+
 class HomeController{
 
-    public function fnName(){}
+    public function home(){
+        echo "Hi from home!";
+    }
 
 }
 

@@ -1,5 +1,6 @@
 <?php  
 $router->get('','HomeController@home');
-$router->get('/users/{id}','UserController@all');
+$router->get('user/{id}','UserController@getOne');
+$router->get('users','UserController@all');
 
 ?>
