@@ -53,16 +53,58 @@ class Router
             }
         }
     }
+
+    // public function direct($url, $requestType)
+    // {
+    //     var_dump($url); // Debugging: Zeige die angeforderte URL an
+    //     var_dump($this->routes); // Debugging: Zeige alle registrierten Routen an
+    
+    //     foreach ($this->routes[$requestType] as $key => $value) {
+    //         $pattern = "@^" . preg_replace('/{([\w]+)}/', '([\w]+)', $key) . "$@D";
+    //         preg_match($pattern, $url, $matches);
+    
+    //         array_shift($matches);
+    
+    //         if ($matches) {
+    //             var_dump($matches); // Debugging: Zeige die extrahierte ID an
+    //             $action = explode("@", $value);
+    //             return $this->callAction($action[0], $action[1], $matches);
+    //         }
+    //     }
+    
+    //     echo "Route nicht gefunden!"; // Debugging: Zeige an, wenn keine Route gefunden wurde
+    // }
+
+    // public function callAction($controller, $action, $vars = [])
+    // {
+    //     $controller = "App\\Controllers\\{$controller}";
+    //     $controller = new $controller;
+    //     if (!method_exists($controller, $action)) {
+    //         throw new Exception("{$controller} not {$action} action !!!");
+    //         // In PHP ist Exception ein zentrales Konzept der Fehlerbehandlung. Es ermöglicht dir, Fehler auf eine strukturierte und kontrollierte Weise zu behandeln, anstatt das Skript einfach abstürzen zu lassen.
+
+    //     }
+
+    //     return $controller->$action($vars);
+    // }
+
     public function callAction($controller, $action, $vars = [])
     {
-        $controller = "App\\Controllers\\{$controller}";
-        $controller = new $controller;
-        if (!method_exists($controller, $action)) {
-            throw new Exception("{$controller} not {$action} action !!!");
-            // In PHP ist Exception ein zentrales Konzept der Fehlerbehandlung. Es ermöglicht dir, Fehler auf eine strukturierte und kontrollierte Weise zu behandeln, anstatt das Skript einfach abstürzen zu lassen.
-
+        $controllerClass = "App\\Controllers\\{$controller}";
+        
+        // Überprüfe, ob die Controller-Klasse existiert
+        if (!class_exists($controllerClass)) {
+            throw new Exception("Controller {$controllerClass} existiert nicht!");
         }
-
-        return $controller->$action($vars);
+    
+        $controllerInstance = new $controllerClass;
+    
+        // Überprüfe, ob die Methode existiert
+        if (!method_exists($controllerInstance, $action)) {
+            throw new Exception("{$controllerClass} hat keine Methode {$action}!");
+        }
+    
+        // Rufe die Methode auf und übergebe die Variablen
+        return $controllerInstance->$action(...$vars);
     }
 }
