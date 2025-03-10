@@ -11,7 +11,7 @@ abstract class Model
         static $db = null;
 
         if ($db === null) {
-            $dsn = 'mysql:host=localhost,dbname=mvc';
+            $dsn = 'mysql:host=localhost;dbname=mvc';
             $db = new PDO($dsn , 'root','');
         }
         return $db;

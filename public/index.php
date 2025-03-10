@@ -14,4 +14,6 @@ use Core\{Request, Router};
 
 // Router::load('../routes/routes.php')->direct(Request::url(), Request::method());
 Router::load('../routes/routes.php')->direct(Request::url(), Request::method());
+
+
 ?>

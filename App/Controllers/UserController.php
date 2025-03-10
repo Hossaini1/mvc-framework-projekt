@@ -2,12 +2,16 @@
 
 namespace App\Controllers;
 
-use core\Controller;
+use Core\Controller;
+use App\Model\User;
 
 class UserController extends Controller{
 
    public function getOne($id){
-        var_dump($id[0]);
+        $user = new User();
+        $user = $user->getById($id[0]);
+        var_dump($user);
+
     }
 
 
