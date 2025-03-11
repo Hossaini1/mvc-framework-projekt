@@ -52,6 +52,8 @@ class Router
                return $this->callAction($action[0], $action[1],$matches);
             }
         }
+
+        throw new Exception("No route defined", 404);
     }
 
     // public function direct($url, $requestType)
