@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+
+
+
+{% block title %}Show user{% endblock %}
+
+
+{% block body %}
+<h1>User Page</h1>
+<p>Name : {{name|upper}}</p>
+<p>ID : {{id}}</p>
+
+{% if users %}
+    <ul>
+        {% for user in users %}
+            <li>{{ user.username|e }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% endblock %}
