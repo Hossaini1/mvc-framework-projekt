@@ -1,0 +1,6 @@
+[14-Mar-2025 10:36:35 Europe/Berlin]  Exception : Exception Message : No route defined Exception : #0 C:\xampp\htdocs\mvc-framework-project\public\index.php(17): core\Router->direct('user', 'GET')
+#1 {main}in : C:\xampp\htdocs\mvc-framework-project\Core\Router.php on line 56
+[14-Mar-2025 10:37:42 Europe/Berlin]  Exception : Exception Message : No route defined Exception : #0 C:\xampp\htdocs\mvc-framework-project\public\index.php(17): core\Router->direct('user', 'GET')
+#1 {main}in : C:\xampp\htdocs\mvc-framework-project\Core\Router.php on line 56
+[14-Mar-2025 10:37:54 Europe/Berlin]  Exception : Exception Message : No route defined Exception : #0 C:\xampp\htdocs\mvc-framework-project\public\index.php(17): core\Router->direct('user', 'GET')
+#1 {main}in : C:\xampp\htdocs\mvc-framework-project\Core\Router.php on line 56

@@ -12,12 +12,19 @@ class UserController extends Controller{
         $user = new User();
         $user = $user->getById($id[0]);
         
-       if ($user) {
+       
         View::render("user/index.html", ['name' => $user->name, 'id'=> $user->id]);
-       }else{
-        View::render("404.html");
-       }
+     
 
+       
+
+    }
+
+    public function all (){
+      $user = new User();
+      $users = $user->getAll();
+
+      View::render("user/list.html",['users' => $users]);
     }
 
 

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}All users{% endblock %}
+{% block title %}User List{% endblock %}
 
 
 {% block body %}
@@ -10,7 +10,8 @@
 {% if users %}
     <ul>
         {% for user in users %}
-            <li>{{ user.username|e }}</li>
+            <li>ID: {{ user.id }}</li>
+            <li>Name: {{ user.name}}</li>
         {% endfor %}
     </ul>
 {% endif %}

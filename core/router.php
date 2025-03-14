@@ -40,7 +40,7 @@ class Router
         }
 
         foreach ($this->routes[$requestType] as $key => $value) { 
-            $pattern = "@^" . preg_replace('/{([\w]+)}/', '([\w]+)' ,$key). "$@D";
+            $pattern = "@^" . preg_replace('/{([\w]+)}/', '([\w]+)' ,$key) . "$@D";
             // preg_replace ist eine Funktion in PHP, die verwendet wird, um Zeichenketten (Strings) basierend auf einem regulären Ausdruck (Regex) zu durchsuchen und zu ersetzen. Das Konzept dahinter ist, dass du einen Suchmuster (Regex) definierst, und alle Teile des Strings, die diesem Muster entsprechen, werden durch einen anderen String ersetzt. // preg_replace($muster, $ersatz, $eingabe);
             // Dieser reguläre Ausdruck würde dann auf einen String passen, der aus einem oder mehr alphanumerischen Zeichen besteht, z.B. "123" oder "abc".
             preg_match($pattern, $url, $matches);
